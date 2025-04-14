@@ -1,0 +1,114 @@
+{
+	"Hypertension": ["Lisinopril", "Losartan", "Amlodipine", "Metoprolol"],
+	"Diabetes Type 2": ["Metformin", "Glipizide", "Insulin", "Sitagliptin"],
+	"Asthma": ["Albuterol", "Budesonide", "Montelukast", "Formoterol"],
+	"Chronic Pain": ["Ibuprofen", "Acetaminophen", "Naproxen", "Tramadol"],
+	"Depression": ["Fluoxetine", "Sertraline", "Citalopram", "Bupropion"],
+	"Infections (Bacterial)": [
+		"Amoxicillin",
+		"Ciprofloxacin",
+		"Azithromycin",
+		"Doxycycline"
+	],
+	"Allergies": ["Loratadine", "Cetirizine", "Diphenhydramine", "Fexofenadine"],
+	"Anxiety": ["Alprazolam", "Lorazepam", "Buspirone", "Diazepam"],
+	"Heart Disease": ["Atorvastatin", "Clopidogrel", "Aspirin", "Metoprolol"],
+	"COVID-19": ["Remdesivir", "Dexamethasone", "Favipiravir", "Baricitinib"],
+	"Arthritis": ["Methotrexate", "Adalimumab", "Naproxen", "Prednisone"],
+	"Hyperthyroidism": [
+		"Methimazole",
+		"Propylthiouracil",
+		"Propranolol",
+		"Carbimazole"
+	],
+	"Hypothyroidism": ["Levothyroxine", "Liothyronine"],
+	"Peptic Ulcer": ["Omeprazole", "Ranitidine", "Amoxicillin", "Clarithromycin"],
+	"Epilepsy": ["Phenytoin", "Carbamazepine", "Valproic Acid", "Lamotrigine"],
+	"Psoriasis": ["Methotrexate", "Adalimumab", "Etanercept", "Cyclosporine"],
+	"Urinary Tract Infection": [
+		"Ciprofloxacin",
+		"Nitrofurantoin",
+		"Trimethoprim",
+		"Amoxicillin"
+	],
+	"Obesity": ["Orlistat", "Liraglutide", "Phentermine", "Bupropion"],
+	"Gastroesophageal Reflux Disease (GERD)": [
+		"Omeprazole",
+		"Lansoprazole",
+		"Esomeprazole",
+		"Ranitidine"
+	],
+	"Chronic Kidney Disease": [
+		"Losartan",
+		"Lisinopril",
+		"Furosemide",
+		"Hydrochlorothiazide"
+	],
+	"Osteoporosis": ["Alendronate", "Risedronate", "Calcitonin", "Denosumab"],
+	"Anemia": ["Ferrous Sulfate", "Vitamin B12", "Folic Acid", "Erythropoietin"],
+	"Bronchitis": ["Albuterol", "Amoxicillin", "Doxycycline", "Prednisone"],
+	"Pneumonia": ["Azithromycin", "Ceftriaxone", "Doxycycline", "Amoxicillin"],
+	"Tuberculosis": ["Isoniazid", "Rifampin", "Ethambutol", "Pyrazinamide"],
+	"Fever": ["Paracetamol", "Ibuprofen", "Acetaminophen"],
+	"Common Cold": [
+		"Pseudoephedrine",
+		"Diphenhydramine",
+		"Phenylephrine",
+		"Acetaminophen"
+	],
+	"Cough": ["Dextromethorphan", "Guaifenesin", "Codeine", "Benzonatate"],
+	"Sore Throat": [
+		"Ibuprofen",
+		"Acetaminophen",
+		"Throat lozenges",
+		"Chloraseptic Spray"
+	],
+	"Migraine": ["Sumatriptan", "Ibuprofen", "Aspirin", "Ergotamine"],
+	"Cholesterol": ["Atorvastatin", "Rosuvastatin", "Simvastatin", "Pravastatin"],
+	"Urinary Tract Infection (UTI)": [
+		"Ciprofloxacin",
+		"Amoxicillin",
+		"Nitrofurantoin",
+		"Trimethoprim"
+	],
+	"Insomnia": ["Zolpidem", "Eszopiclone", "Melatonin", "Trazodone"],
+	"Acne": ["Benzoyl Peroxide", "Clindamycin", "Isotretinoin", "Salicylic Acid"],
+	"Diabetes": ["Metformin", "Insulin", "Glipizide", "Sitagliptin"],
+	"Rheumatoid Arthritis": [
+		"Methotrexate",
+		"Hydroxychloroquine",
+		"Sulfasalazine",
+		"Adalimumab"
+	],
+	"Parkinson’s Disease": ["Levodopa", "Carbidopa", "Ropinirole", "Pramipexole"],
+	"Osteoarthritis": ["Ibuprofen", "Diclofenac", "Acetaminophen", "Naproxen"],
+	"Sinusitis": ["Amoxicillin", "Clavulanate", "Cefdinir", "Azithromycin"],
+	"Eczema": [
+		"Hydrocortisone",
+		"Tacrolimus",
+		"Pimecrolimus",
+		"Corticosteroid creams"
+	],
+	"Coronary Artery Disease (CAD)": [
+		"Aspirin",
+		"Metoprolol",
+		"Atorvastatin",
+		"Lisinopril"
+	],
+	"Arrhythmia": ["Propranolol", "Amiodarone", "Flecainide", "Diltiazem"],
+	"Heart Failure": ["Digoxin", "Spironolactone", "Furosemide", "Carvedilol"],
+	"Atrial Fibrillation": ["Warfarin", "Dabigatran", "Apixaban", "Sotalol"],
+	"Angina": [
+		"Nitroglycerin",
+		"Atenolol",
+		"Isosorbide Mononitrate",
+		"Ranolazine"
+	],
+	"Myocardial Infarction (Heart Attack)": [
+		"Aspirin",
+		"Clopidogrel",
+		"Heparin",
+		"Simvastatin"
+	],
+	"Cardiomyopathy": ["Carvedilol", "Metoprolol", "Enalapril", "Diuretics"]
+}

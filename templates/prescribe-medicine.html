@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Health-Genie</title>
+		<link rel="icon" href="./static/images/heart-pulse-solid.svg" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+			integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<style>
+			/* Style for the body */
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f3f7f9;
+				color: #333;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				margin: 0;
+				padding: 2rem;
+			}
+
+			/* Container styling */
+			form {
+				max-width: 800px;
+				background-color: #ffffff;
+				padding: 2rem;
+				border-radius: 8px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			}
+
+			/* Header style */
+			h2 {
+				color: rgb(19, 62, 135);
+				font-size: 1.8rem;
+				margin-bottom: 1rem;
+				text-align: center;
+			}
+
+			/* Disease category cards */
+			.disease-card {
+				background-color: rgb(96, 138, 193);
+				color: #fff;
+				padding: 1.5rem;
+				border-radius: 10px;
+				margin-bottom: 1.5rem;
+				box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+			}
+
+			.disease-card h4 {
+				font-size: 1.3rem;
+				margin-bottom: 0.5rem;
+				color: #fff; /* Updated for better readability */
+			}
+
+			/* Form labels within cards */
+			.disease-card .form-check-label {
+				font-size: 1rem;
+				color: #ffffff; /* White color for better contrast */
+				margin-left: 0.2rem;
+			}
+
+			/* Checkboxes */
+			.form-check {
+				margin: 0.5rem 0;
+				display: flex;
+				align-items: center;
+			}
+
+			.form-check-input {
+				margin-right: 0.5rem;
+			}
+
+			/* Button styling */
+			button[type="submit"] {
+				background-color: rgb(19, 62, 135);
+				color: #fff;
+				font-size: 1rem;
+				font-weight: bold;
+				padding: 0.8rem 1.5rem;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				width: 100%;
+				margin-top: 1.5rem;
+				transition: background-color 0.3s ease;
+			}
+
+			button[type="submit"]:hover {
+				background-color: rgb(16, 52, 115);
+			}
+
+			/* Responsive Design */
+			@media (max-width: 600px) {
+				form {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<h2>Prescribe Medicine for {{ appointment.name }}</h2>
+		<form method="post">
+			<div class="form-group">
+				<label>Select Medicines:</label>
+				{% for category, medicines in available_medicines.items() %}
+				<h4>{{ category }}</h4>
+				{% for medicine in medicines %}
+				<div class="form-check">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						name="medicines[]"
+						value="{{ medicine }}"
+						id="medicine-{{ loop.index0 }}"
+					/>
+					<label class="form-check-label" for="medicine-{{ loop.index0 }}"
+						>{{ medicine }}</label
+					>
+				</div>
+				{% endfor %} {% endfor %}
+			</div>
+			<button type="submit" class="btn btn-primary">Submit Prescription</button>
+		</form>
+	</body>
+</html>

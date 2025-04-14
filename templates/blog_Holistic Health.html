@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Health-Genie</title>
+		<link rel="icon" href="static\images\website-logo.png" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+			integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<style>
+      .about {
+    padding: 50px 0;
+    background-color: #f4f4f9; /* Light background for a calm feel */
+    color: #333;
+}
+
+.heading {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #2a7b8c; /* Dark teal color for the heading */
+}
+
+.icon {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.icon a {
+    color: #555;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.image img {
+    max-width: 100%;
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content {
+    max-width: 600px; /* Limit the width of text content */
+    margin: 0 20px;
+}
+
+.content h3 {
+    margin-top: 20px;
+    color: #2a7b8c; /* Same color for subheadings */
+}
+
+.content p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image, .content {
+        margin: 10px 0;
+    }
+}
+
+			.footer-section {
+				background-color: rgb(96, 138, 193); /* Blue background */
+				color: white;
+				padding: 40px 0;
+				text-align: center;
+				margin-top: 40px;
+				border-radius: 8px;
+			}
+
+			.box-container {
+				display: flex;
+				justify-content: center;
+				gap: 60px; /* Increased gap between boxes */
+				margin-top: 20px;
+			}
+
+			.credit {
+				margin-top: 20px;
+				font-size: 1.8rem;
+				color: white;
+				text-align: center;
+			}
+
+			.quick-links {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 20px 0;
+				gap: 12px;
+			}
+
+			.quick-links a {
+				color: white; /* White color for links */
+				text-decoration: none;
+				font-size: 1.4rem;
+				transition: color 0.3s; /* Smooth color transition */
+			}
+
+			.quick-links a:hover {
+				color: #e0e0e0; /* Light grey on hover */
+				text-decoration: underline;
+			}
+			.icon {
+				padding: 1rem 0;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.icon a {
+				font-size: 1.4rem;
+				color: var(--light-color);
+			}
+
+			.icon a:hover {
+				color: var(--green);
+			}
+
+			.icon a i {
+				padding-right: 0.5rem;
+				color: var(--green);
+			}
+
+			.content {
+				padding-top: 1rem;
+			}
+
+			.content h3 {
+				color: var(--black);
+				font-size: 3rem;
+			}
+
+			.content p {
+				color: black;
+				font-size: 1.5rem;
+				line-height: 1.8;
+				padding: 1rem 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="header">
+			<a href="{{url_for('index')}}" class="logo" style="color: white"
+				>Health-Genie</a
+			>
+			<nav class="navbar">
+				{% if username %}
+				<a href="{{url_for('index')}}#home">Home</a>
+				<a href="{{url_for('index')}}#services">services</a>
+				<a href="{{url_for('index')}}#book">Book</a>
+				<a href="{{url_for('index')}}#scans">Scans</a>
+				<a href="{{url_for('index')}}#blogs">Blogs</a>
+				<a href="{{url_for('index')}}#about">about</a>
+				<a href="{{url_for('profile')}}"><span class="fas fa-user"></span></a>
+				{% else %}
+				<a href="{{url_for('login')}}">Login</a>
+				{% endif %}
+			</nav>
+
+			<div id="menu-btn" class="fas fa-bars"></div>
+		</header>
+
+		<section class="about" id="about">
+    <h1 class="heading" style="margin-top: 8rem; color: black">
+        "Exploring the Depths of Mental Wellness:
+        <span style="color: rgb(19, 62, 135);">Fostering Resilience and Joy</span>"
+    </h1>
+    <div class="icon">
+        <a href="" class="disabled" style="color: black"
+            ><i class="fas fa-calendar" style="color: rgb(19, 62, 135);"></i> 25th oct, 2024</a
+        >
+    </div>
+    <div class="row">
+        <div class="image">
+            <img
+                src="https://cdni.iconscout.com/illustration/premium/thumb/healthy-lifestyle-8086926-6525308.png?f=webp"
+                alt="Healthy Lifestyle"
+            />
+        </div>
+        <div class="content">
+            <h3 style="font-size: 1.8rem">Introduction:</h3>
+            <p>
+                In our increasingly complex world, prioritizing mental wellness is
+                essential for leading a balanced life. This guide delves into the
+                facets of mental health and offers practical strategies to enhance
+                resilience and joy. Embracing a holistic approach to mental well-being
+                can profoundly impact our overall health and happiness.
+            </p>
+            <p>
+                In therapeutic practices, innovative techniques like cognitive-behavioral
+                therapy are employed to assist individuals in reframing their thoughts,
+                fostering a positive mindset, and enhancing emotional well-being.
+            </p>
+        </div>
+    </div>
+    <div class="content">
+        <h3 style="font-size: 2.2rem">- Section 1: Cultivating Positive Habits</h3>
+        <h3 style="font-size: 1.8rem">1.1 Mindful Eating:</h3>
+        <p>
+            Embrace mindful eating by savoring your meals and recognizing hunger cues.
+            Incorporate a diverse range of nutrient-rich foods to nourish both body and
+            mind.
+        </p>
+        <h3 style="font-size: 1.8rem">1.2 Hydration:</h3>
+        <p>
+            Staying hydrated is vital for mental clarity and energy. Aim to drink enough
+            water daily, enhancing mood and cognitive function.
+        </p>
+        <h3 style="font-size: 1.8rem">1.3 Physical Activity:</h3>
+        <p>
+            Engage in activities that bring joy, whether it’s dancing, hiking, or yoga.
+            Regular movement releases endorphins, which boost mood and reduce stress.
+        </p>
+        <h3 style="font-size: 1.8rem">1.4 Quality Sleep:</h3>
+        <p>
+            Prioritize sleep as a cornerstone of mental health. Establish a calming
+            bedtime routine and aim for restorative rest to enhance mood and resilience.
+        </p>
+
+        <h3 style="font-size: 2.2rem">- Section 2: Enhancing Emotional Resilience</h3>
+        <h3 style="font-size: 1.8rem">2.1 Effective Coping Strategies:</h3>
+        <p>
+            Develop coping mechanisms to navigate life's challenges. Techniques such as
+            journaling, meditation, or deep breathing can alleviate stress and foster
+            emotional balance.
+        </p>
+        <h3 style="font-size: 1.8rem">2.2 Balancing Work and Leisure:</h3>
+        <p>
+            Allocate time for hobbies and leisure activities. Balancing work with
+            pleasurable pursuits cultivates happiness and mitigates burnout.
+        </p>
+        <h3 style="font-size: 1.8rem">2.3 Building Supportive Relationships:</h3>
+        <p>
+            Invest in meaningful relationships. Surrounding yourself with supportive
+            individuals fosters a sense of belonging and emotional security.
+        </p>
+        <h3 style="font-size: 1.8rem">2.4 Continuous Learning:</h3>
+        <p>
+            Embrace lifelong learning by pursuing new skills or hobbies. Engaging your
+            mind stimulates creativity and contributes to a fulfilling life.
+        </p>
+    </div>
+    <div class="row">
+        <div class="content">
+            <h3 style="font-size: 2.2em">- Section 3: Strategies for Lifelong Mental Wellness</h3>
+            <h3 style="font-size: 1.8em">3.1 Regular Mental Health Check-ins:</h3>
+            <p>
+                Schedule regular assessments of your mental health to ensure your emotional
+                needs are met. Self-reflection can help identify areas for growth and
+                improvement.
+            </p>
+            <h3 style="font-size: 1.8em">3.2 Limiting Negative Influences:</h3>
+            <p>
+                Identify and reduce exposure to negative influences, including toxic
+                relationships and excessive social media consumption.
+            </p>
+            <h3 style="font-size: 1.8em">3.3 Practicing Gratitude:</h3>
+            <p>
+                Cultivate a gratitude practice by noting things you are thankful for each
+                day. This fosters a positive outlook and enhances overall happiness.
+            </p>
+            <h3 style="font-size: 1.8em">3.4 Seeking Professional Support:</h3>
+            <p>
+                Don't hesitate to seek help from mental health professionals when needed.
+                Therapy and counseling can provide valuable tools and insights for navigating
+                life's challenges.
+            </p>
+            <h3 style="font-size: 2.2em">Conclusion:</h3>
+            <p>
+                Prioritizing mental wellness is an essential aspect of a fulfilling life. By
+                integrating positive habits, fostering resilience, and nurturing emotional
+                well-being, you can enhance your mental health and overall quality of life.
+                Remember that the journey to mental wellness is ongoing, and each step you
+                take contributes to a brighter, more joyful existence.
+            </p>
+        </div>
+        <div class="image">
+            <img
+                src="https://cdn3d.iconscout.com/3d/premium/thumb/exercise-6358795-5272657.png"
+                alt="Exercise Illustration"
+            />
+        </div>
+    </div>
+</section>
+
+
+			<style>
+				.chatbot-button {
+					position: fixed;
+					bottom: 20px;
+					right: 20px;
+					background-color: rgb(19, 62, 135);
+					color: white;
+					border: none;
+					border-radius: 50%;
+					width: 60px;
+					height: 60px;
+					font-size: 24px;
+					cursor: pointer;
+					box-shadow: 0 4px 10px rgb(19, 62, 135);
+				}
+
+				.chat-container {
+					display: none; /* Hide the chat by default */
+					position: fixed;
+					bottom: 80px;
+					right: 20px;
+					width: 400px;
+					max-height: 500px;
+					background-color: white;
+					border: 1px solid #ccc;
+					border-radius: 8px;
+					box-shadow: 0 4px 10px rgb(19, 62, 135);
+					overflow-y: auto;
+				}
+
+				.chat-header {
+					background-color: rgb(19, 62, 135);
+					color: white;
+					padding: 10px;
+					text-align: center;
+					border-top-left-radius: 8px;
+					border-top-right-radius: 8px;
+				}
+
+				.chat-body {
+					padding: 10px;
+				}
+
+				.chat-message {
+					margin: 5px 0;
+					padding: 8px;
+					border-radius: 4px;
+				}
+
+				.user-message {
+					background-color: #e1f5fe;
+					align-self: flex-end;
+				}
+
+				.bot-message {
+					background-color: #f1f8e9;
+					align-self: flex-start;
+				}
+
+				.chat-input {
+					display: flex;
+					padding: 10px;
+					border-top: 1px solid #ccc;
+				}
+
+				.chat-input input {
+					flex: 1;
+					padding: 10px;
+					border: 1px solid #ccc;
+					border-radius: 4px;
+				}
+
+				.chat-input button {
+					background-color: rgb(19, 62, 135);
+					color: white;
+					border: none;
+					border-radius: 4px;
+					padding: 10px;
+					margin-left: 5px;
+					cursor: pointer;
+				}
+			</style>
+
+			<button class="chatbot-button" id="chatbot-toggle">
+				<i class="fas fa-comment-alt"></i>
+			</button>
+
+			<!-- Chat Container -->
+			<div class="chat-container" id="chat-container">
+				<div class="chat-header">
+					<h3>Chat with us!</h3>
+				</div>
+				<div class="chat-body" id="chat-body">
+					<!-- Chat messages will be appended here -->
+				</div>
+				<div class="chat-input">
+					<input
+						type="text"
+						id="chat-input"
+						placeholder="Type your message..."
+					/>
+					<button id="send-button">Send</button>
+				</div>
+			</div>
+
+			<script>
+				// Toggle Chat Window
+				document.getElementById("chatbot-toggle").onclick = function () {
+					const chatContainer = document.getElementById("chat-container")
+					if (
+						chatContainer.style.display === "none" ||
+						chatContainer.style.display === ""
+					) {
+						chatContainer.style.display = "block"
+					} else {
+						chatContainer.style.display = "none"
+					}
+				}
+
+				// Send Message Handler
+				document.getElementById("send-button").onclick = async function () {
+					const input = document.getElementById("chat-input")
+					const message = input.value
+
+					console.log(message)
+
+					if (message.trim() !== "") {
+						try {
+							// Send POST request to server
+							const res = await fetch("/chat1", {
+								method: "POST",
+								body: JSON.stringify({ query: message }),
+								headers: { "Content-Type": "application/json" },
+							})
+
+							if (!res.ok) {
+								throw new Error("Server responded with an error.")
+							}
+
+							const data = await res.json() // Await response JSON
+
+							appendMessage("user", message) // Append user message
+							input.value = "" // Clear input field
+
+							console.log(data) // Log the response data
+
+							appendMessage("bot", data.response) // Append bot response from server
+						} catch (error) {
+							console.error("Error sending message:", error)
+							appendMessage("bot", "An error occurred. Please try again later.")
+						}
+					}
+				}
+
+				// Function to Append Chat Messages
+				function appendMessage(sender, message) {
+					const chatBody = document.getElementById("chat-body")
+					const messageDiv = document.createElement("div")
+					messageDiv.className =
+						"chat-message " +
+						(sender === "user" ? "user-message" : "bot-message")
+					messageDiv.textContent = message
+					chatBody.appendChild(messageDiv)
+					chatBody.scrollTop = chatBody.scrollHeight // Scroll to the bottom
+				}
+			</script>
+		</section>
+		<section class="footer-section">
+			<div class="box-container">
+				<div class="quick-links">
+					<h3 style="font-size: 2rem">Quick Links</h3>
+					<a href="{{url_for('index')}}#home"
+						><i class="fas fa-chevron-right"></i> Home</a
+					>
+					<a href="{{url_for('index')}}#services"
+						><i class="fas fa-chevron-right"></i> Services</a
+					>
+					<a href="{{url_for('index')}}#book"
+						><i class="fas fa-chevron-right"></i> Book</a
+					>
+					<a href="{{url_for('index')}}#scans"
+						><i class="fas fa-chevron-right"></i> Scans</a
+					>
+					<a href="{{url_for('index')}}#blogs"
+						><i class="fas fa-chevron-right"></i> Blogs</a
+					>
+					<a href="{{url_for('index')}}#about"
+						><i class="fas fa-chevron-right"></i> About</a
+					>
+				</div>
+			</div>
+			<div class="credit">&copy; Health-Genie @ 2024</div>
+		</section>
+		<script src="../static/js/script.js"></script>
+	</body>
+</html>

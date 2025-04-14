@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Health-Genie</title>
+		<link rel="icon" href="static/images/website-logo.png" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+			integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<style>
+			/* Reset and global styles */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body,
+			html {
+				font-family: Arial, sans-serif;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				overflow: hidden;
+			}
+			/* Centered video call container */
+			#root {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-grow: 1;
+				margin-top: 5rem; /* Space for fixed header */
+				margin-bottom: 3rem; /* Space for fixed footer */
+				overflow-y: auto; /* Enable scrolling */
+			}
+			.video-container {
+				width: 100%;
+				max-width: 800px;
+				height: 60vh;
+				background-color: #f0f0f0;
+				border-radius: 8px;
+				overflow: auto; /* Enable scrolling */
+				box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Navbar -->
+		<header class="header" id="header">
+			<a href="{{ url_for('index') }}" class="logo">Health-Genie</a>
+			<nav class="navbar">
+				{% if username %}
+				<a href="{{ url_for('index') }}#home">Home</a>
+				<a href="{{ url_for('index') }}#services">Services</a>
+				<a href="{{ url_for('index') }}#book">Book</a>
+				<a href="{{ url_for('index') }}#scans">Scans</a>
+				<a href="{{ url_for('index') }}#blogs">Blogs</a>
+				<a href="{{ url_for('index') }}#about">About</a>
+				<a href="{{ url_for('profile') }}"><span class="fas fa-user"></span></a>
+				{% else %}
+				<a href="{{ url_for('login') }}">Login</a>
+				{% endif %}
+			</nav>
+			<div id="menu-btn" class="fas fa-bars"></div>
+		</header>
+
+		<!-- Main Video Call Container -->
+		<div id="root">
+			<div class="video-container" id="videoContainer">
+				<!-- ZegoUIKit will populate here -->
+			</div>
+		</div>
+
+		<!-- Scripts -->
+		<script src="./static/js/script.js"></script>
+		<script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
+		<script>
+			window.onload = function () {
+				function getUrlParams(url) {
+					let urlStr = url.split("?")[1]
+					const urlSearchParams = new URLSearchParams(urlStr)
+					return Object.fromEntries(urlSearchParams.entries())
+				}
+
+				const urlParams = getUrlParams(window.location.href)
+				const roomID =
+					urlParams["roomID"] || Math.floor(Math.random() * 10000).toString()
+				const userID = Math.floor(Math.random() * 10000).toString()
+				const userName = urlParams["username"]
+
+				const appID = 418575694
+				const serverSecret = "bc75040146595c8302b949df52248430"
+				const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+					appID,
+					serverSecret,
+					roomID,
+					userID,
+					userName
+				)
+
+				const zp = ZegoUIKitPrebuilt.create(kitToken)
+				zp.joinRoom({
+					container: document.querySelector("#videoContainer"),
+					sharedLinks: [
+						{
+							name: "Meeting Link",
+							url: `${window.location.protocol}//${window.location.host}${window.location.pathname}?roomID=${roomID}`,
+						},
+					],
+					scenario: {
+						mode: ZegoUIKitPrebuilt.VideoConference,
+					},
+					turnOnMicrophoneWhenJoining: true,
+					turnOnCameraWhenJoining: true,
+					showMyCameraToggleButton: true,
+					showMyMicrophoneToggleButton: true,
+					showAudioVideoSettingsButton: true,
+					showScreenSharingButton: true,
+					showTextChat: true,
+					showUserList: true,
+					maxUsers: 2,
+					layout: "Auto",
+					showLayoutButton: false,
+				})
+			}
+		</script>
+	</body>
+</html>

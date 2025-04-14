@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Health-Genie</title>
+		<link rel="icon" href="static\images\website-logo.png" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+			integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<style>
+			.footer-section {
+				background-color: rgb(96, 138, 193); /* Blue background */
+				color: white;
+				padding: 40px 0;
+				text-align: center;
+				margin-top: 40px;
+				border-radius: 8px;
+			}
+
+			.box-container {
+				display: flex;
+				justify-content: center;
+				gap: 60px; /* Increased gap between boxes */
+				margin-top: 20px;
+			}
+
+			.credit {
+				margin-top: 20px;
+				font-size: 1.8rem;
+				color: white;
+				text-align: center;
+			}
+
+			.quick-links {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 20px 0;
+				gap: 12px;
+			}
+
+			.quick-links a {
+				color: white; /* White color for links */
+				text-decoration: none;
+				font-size: 1.4rem;
+				transition: color 0.3s; /* Smooth color transition */
+			}
+
+			.quick-links a:hover {
+				color: #e0e0e0; /* Light grey on hover */
+				text-decoration: underline;
+			}
+			label {
+				color: green;
+				font-size: 1.3rem;
+			}
+			.logo {
+				color: black;
+			}
+			/* CSS for Appointment Booking Form */
+			body {
+				font-family: Arial, sans-serif;
+				color: #333;
+				margin: 0;
+				padding: 0;
+			}
+
+			.book {
+				text-align: center;
+				padding-top: 2rem;
+			}
+
+			.heading {
+				color: #333;
+				font-size: 2rem;
+				font-weight: bold;
+				margin-bottom: 1.5rem;
+			}
+
+			.glass-row {
+				background: #ffffff;
+				border-radius: 12px;
+				padding: 2rem;
+				width: 90%;
+				max-width: 500px;
+				margin: 0 auto;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+				color: #333;
+			}
+
+			.glass-row form {
+				display: flex;
+				flex-direction: column;
+			}
+
+			form label {
+				font-size: 1rem;
+				color: #333;
+				margin-top: 1rem;
+				font-weight: 600;
+			}
+
+			form .box {
+				width: 100%;
+				padding: 0.9rem;
+				margin: 0.4rem 0;
+				border-radius: 8px;
+				border: 1px solid #ccc;
+				background-color: #f9f9f9;
+				color: #333;
+				font-size: 1rem;
+				outline: none;
+				box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			form select {
+				padding: 1rem; /* Adjusted padding for better height control */
+				border-radius: 1rem;
+				border: 2px solid rgb(19, 62, 135);
+				color: black; /* Text color changed to black */
+				width: 100%; /* Ensures full width within the form */
+				height: auto; /* Allow height to adjust based on content */
+				font-size: 1.6rem; /* You can adjust the font size as needed */
+				outline: none; /* Removes the default focus outline */
+			}
+
+			/* Styling for options can be limited; padding won't affect them much */
+			form select option {
+				background: rgba(135, 206, 250, 0.2); /* Light Sky Blue */
+				color: black; /* Text color changed to black */
+			}
+
+			form .btn {
+				width: 100%;
+				padding: 0.9rem;
+				margin-top: 1.2rem;
+				border-radius: 8px;
+				border: none;
+				background: #4caf50;
+				color: #ffffff;
+				font-size: 1.1rem;
+				font-weight: bold;
+				cursor: pointer;
+				transition: background 0.3s ease;
+				box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+			}
+
+			form .btn:hover {
+				background: #43a047;
+			}
+
+			form p {
+				color: #333;
+				font-size: 0.9rem;
+				margin-top: 1.5rem;
+				line-height: 1.4;
+			}
+
+			form a {
+				color: #4caf50;
+				text-decoration: none;
+				font-weight: 600;
+			}
+
+			form a:hover {
+				color: #43a047;
+				text-decoration: underline;
+			}
+
+			/* Input placeholder color */
+			form .box::placeholder {
+				color: #aaa;
+			}
+
+			/* Adjusting select drop-down arrow for consistency */
+			select {
+				appearance: none;
+				background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%234CAF50' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+				background-repeat: no-repeat;
+				background-position: right 0.8rem center;
+				background-size: 1rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="header">
+			<a href="{{url_for('index')}}" class="logo">Health-Genie</a>
+			<nav class="navbar">
+				{% if username %}
+				<a href="{{url_for('index')}}#home">Home</a>
+				<a href="{{url_for('index')}}#services">services</a>
+				<a href="{{url_for('index')}}#book">Book</a>
+				<a href="{{url_for('index')}}#scans">Scans</a>
+				<a href="{{url_for('index')}}#blogs">Blogs</a>
+				<a href="{{url_for('index')}}#about">about</a>
+				<a href="{{url_for('profile')}}"><span class="fas fa-user"></span></a>
+				{% else %}
+				<a href="{{url_for('login')}}">Login</a>
+				{% endif %}
+			</nav>
+
+			<div id="menu-btn" class="fas fa-bars"></div>
+		</header>
+		<section class="book" id="book">
+			<h1 class="heading" style="margin-top: 8rem">
+				Book your appointment here!!
+			</h1>
+			<div class="glass-row" style="margin-top: 40px">
+				<form action="{{ url_for('book_appointment') }}" method="post">
+					<a href="{{url_for('index')}}" class="logo">Health-Genie</a
+					><br /><br />
+					<label for="name">Enter your name:</label>
+					<input
+						type="text"
+						placeholder="Patient Name"
+						class="box"
+						id="Name"
+						name="name"
+						required
+					/>
+					<label for="name">Enter your Age:</label>
+					<input
+						placeholder="Age"
+						class="box"
+						id="Age"
+						type="number"
+						name="age"
+						required
+						min="15"
+						max="75"
+					/>
+					<label for="name">Enter your Blood Group:</label>
+					<input
+						placeholder="Blood group"
+						class="box"
+						id="Blood group"
+						type="text"
+						name="blood_group"
+						required
+					/>
+					<label for="name">Select Preferred time slot :</label>
+					<select name="time_slot" required>
+						<option value="Morning">Morning (8AM-11AM)</option>
+						<option value="Afternoon">Afternoon (1PM-4PM)</option>
+						<option value="Evening">Evening (5PM-8PM)</option></select
+					><br /><br />
+					<label for="name">Enter your Phone Number:</label>
+					<input
+						placeholder="Phone Number"
+						class="box"
+						id="Phone Number"
+						type="number"
+						name="phone_number"
+						required
+					/>
+					<label for="name">Enter your Email:</label>
+					<input
+						placeholder="Email"
+						class="box"
+						id="Email"
+						type="email"
+						name="email"
+						required
+					/>
+					<label for="name">Select type of doctor :</label>
+					<select name="type_of_doctor" required>
+						{% for doctor_type in doctor_types %}
+						<div class="select_option">
+							<option value="{{ doctor_type }}">{{ doctor_type }}</option>
+						</div>
+						{% endfor %}</select
+					><br />
+
+					<input type="submit" value="Book" class="btn" />
+					<p style="color: #16a085; font-size: 1.3rem; margin-top: 2rem">
+						By continuing, you agree to Health-Genie's
+						<a style="color: #16a085" href="{{url_for('policy')}}"
+							>Terms of Service</a
+						>
+						Opens a new tab and acknowledge you've read our Privacy Policy.
+						Notice at collection.
+					</p>
+				</form>
+			</div>
+			<style>
+				.chatbot-button {
+					position: fixed;
+					bottom: 20px;
+					right: 20px;
+					background-color: #133e87;
+					color: white;
+					border: none;
+					border-radius: 50%;
+					width: 60px;
+					height: 60px;
+					font-size: 24px;
+					cursor: pointer;
+					box-shadow: 0 4px 10px rgba(22, 158, 133, 0.5);
+				}
+
+				.chat-container {
+					display: none;
+					position: fixed;
+					bottom: 80px;
+					right: 20px;
+					width: 300px;
+					background-color: #ffffff;
+					border-radius: 10px;
+					box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+					overflow: hidden;
+				}
+
+				.chat-header {
+					background-color: #133e87;
+					color: white;
+					padding: 10px;
+					text-align: center;
+				}
+
+				.chat-body {
+					max-height: 200px;
+					padding: 10px;
+					overflow-y: auto;
+				}
+
+				.chat-input {
+					display: flex;
+					padding: 10px;
+					border-top: 1px solid #ccc;
+				}
+
+				.chat-input input {
+					flex: 1;
+					padding: 8px;
+					border: 1px solid #ccc;
+					border-radius: 4px;
+				}
+
+				.chat-input button {
+					background-color: #133e87;
+					color: white;
+					border: none;
+					padding: 8px;
+					margin-left: 5px;
+					cursor: pointer;
+				}
+			</style>
+
+			<button class="chatbot-button" id="chatbot-toggle">
+				<i class="fas fa-comment-alt"></i>
+			</button>
+
+			<!-- Chat Container -->
+			<div class="chat-container" id="chat-container">
+				<div class="chat-header">
+					<h3>Chat with us!</h3>
+				</div>
+				<div class="chat-body" id="chat-body">
+					<!-- Chat messages will be appended here -->
+				</div>
+				<div class="chat-input">
+					<input
+						type="text"
+						id="chat-input"
+						placeholder="Type your message..."
+					/>
+					<button id="send-button">Send</button>
+				</div>
+			</div>
+
+			<script>
+				// Toggle Chat Window
+				document.getElementById("chatbot-toggle").onclick = function () {
+					const chatContainer = document.getElementById("chat-container")
+					if (
+						chatContainer.style.display === "none" ||
+						chatContainer.style.display === ""
+					) {
+						chatContainer.style.display = "block"
+					} else {
+						chatContainer.style.display = "none"
+					}
+				}
+
+				// Send Message Handler
+				document.getElementById("send-button").onclick = async function () {
+					const input = document.getElementById("chat-input")
+					const message = input.value
+
+					console.log(message)
+
+					if (message.trim() !== "") {
+						try {
+							// Send POST request to server
+							const res = await fetch("/chat1", {
+								method: "POST",
+								body: JSON.stringify({ query: message }),
+								headers: { "Content-Type": "application/json" },
+							})
+
+							if (!res.ok) {
+								throw new Error("Server responded with an error.")
+							}
+
+							const data = await res.json() // Await response JSON
+
+							appendMessage("user", message) // Append user message
+							input.value = "" // Clear input field
+
+							console.log(data) // Log the response data
+
+							appendMessage("bot", data.response) // Append bot response from server
+						} catch (error) {
+							console.error("Error sending message:", error)
+							appendMessage("bot", "An error occurred. Please try again later.")
+						}
+					}
+				}
+
+				// Function to Append Chat Messages
+				function appendMessage(sender, message) {
+					const chatBody = document.getElementById("chat-body")
+					const messageDiv = document.createElement("div")
+					messageDiv.className =
+						"chat-message " +
+						(sender === "user" ? "user-message" : "bot-message")
+					messageDiv.textContent = message
+					chatBody.appendChild(messageDiv)
+					chatBody.scrollTop = chatBody.scrollHeight // Scroll to the bottom
+				}
+			</script>
+		</section>
+
+		<section class="footer-section">
+			<div class="box-container">
+				<div class="quick-links">
+					<h3 style="font-size: 2rem">Quick Links</h3>
+					<a href="{{url_for('index')}}#home"
+						><i class="fas fa-chevron-right"></i> Home</a
+					>
+					<a href="{{url_for('index')}}#services"
+						><i class="fas fa-chevron-right"></i> Services</a
+					>
+					<a href="{{url_for('index')}}#book"
+						><i class="fas fa-chevron-right"></i> Book</a
+					>
+					<a href="{{url_for('index')}}#scans"
+						><i class="fas fa-chevron-right"></i> Scans</a
+					>
+					<a href="{{url_for('index')}}#blogs"
+						><i class="fas fa-chevron-right"></i> Blogs</a
+					>
+					<a href="{{url_for('index')}}#about"
+						><i class="fas fa-chevron-right"></i> About</a
+					>
+				</div>
+			</div>
+			<div class="credit">&copy; Health-Genie @ 2024</div>
+		</section>
+
+		<script src="./static/js/script.js"></script>
+		<script>
+			$(".carousel").owlCarousel({
+				margin: 20,
+				loop: true,
+				autoplay: true,
+				autoplayTimeOut: 2000,
+				autoplayHoverPause: true,
+				responsive: {
+					0: {
+						items: 1,
+						nav: false,
+					},
+					600: {
+						items: 2,
+						nav: false,
+					},
+					1000: {
+						items: 4,
+						nav: false,
+					},
+				},
+			})
+		</script>
+	</body>
+</html>
